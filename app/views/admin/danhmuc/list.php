@@ -22,14 +22,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                        <?php foreach ($listdanhmuc as $danhmuc) {
-                            extract($danhmuc);
-                            $suadm = "index.php?act=suadm&id=" . $id;
-                            $xoadm = "index.php?act=xoadm&id=" . $id;
-                            $hinhpath = "../../images/".$img;  // Đường dẫn đến ảnh
-                            $hinh = is_file($hinhpath) ? $hinhpath : "path/to/default/image.jpg"; 
+                            <?php foreach ($listdanhmuc as $danhmuc) {
+                                extract($danhmuc);
+                                $suadm = "index.php?act=suadm&id=" . $id;
+                                $xoadm = "index.php?act=xoadm&id=" . $id;
+                                $hinhpath = "../../images/" . $img;  // Đường dẫn đến ảnh
+                                $hinh = is_file($hinhpath) ? $hinhpath : "path/to/default/image.jpg";
 
-                            echo '<tr>
+                                echo '<tr>
                                 <td>' . $id . '</td>
                                 <td>' . $name . '</td>
                                 <td><img src="' . $hinh . '" width="100px"></td>
@@ -38,7 +38,7 @@
                                     <a href="' . $xoadm . '" class="btn btn-danger btn-sm" onclick="return confirmDelete()">Xóa</a>
                                 </td>
                             </tr>';
-                        } ?>
+                            } ?>
                         </tbody>
                     </table>
                 </div>
@@ -50,7 +50,7 @@
 
 <!-- JavaScript function to confirm delete -->
 <script>
-function confirmDelete() {
-    return confirm('Bạn có chắc chắn muốn xóa danh mục này không?');
-}
+    function confirmDelete() {
+        return confirm('Bạn có chắc chắn muốn xóa danh mục này không?');
+    }
 </script>
