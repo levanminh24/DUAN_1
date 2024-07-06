@@ -113,6 +113,10 @@ if (isset($_GET['act'])) {
                             $listdanhmuc = loadall_danhmuc();
                             include "sanpham/list.php";
                             break;
+                            case 'listtkadmin':
+                                $listtaikhoan = loadall_taikhoan();
+                                include "taikhoan/list.php";
+                                break;
                         
         
     }

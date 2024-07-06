@@ -4,3 +4,9 @@ function loadall_spHome(){
     $listsp = pdo_query($sql);
     return $listsp;
 }
+function chiTietSanPham($idsp){
+   $sql = "select * from sanpham where id = $idsp";
+   $ctsp = pdo_query_one($sql);
+   return $ctsp;
+}
+
