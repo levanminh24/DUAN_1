@@ -8,9 +8,11 @@ if (isset($_GET['redirect'])) {
 
         case 'sanphamct':
             $id = $_GET['idsp'];
+           
             $sanpham = chiTietSanPham($id);
             $danhmuc = loadall_danhmuc();
-
+           
+            $binhluan=loadall_binhluan($sanpham['id']);
 
             $size = loadall_size();
             include "app/views/Client/sanpham/ctsp.php";
@@ -95,7 +97,7 @@ if (isset($_GET['redirect'])) {
                 if (empty($errors['tendangnhap']) && empty($errors['matkhau']) && empty($errors['email']) && empty($errors['sodienthoai']) && empty($errors['diachi'])) {
                     $dangky = dangky($tendangnhap, $matkhau, $email, $sodienthoai, $diachi);
                     echo '<script>alert("Đăng ký thành công")</script>';
-                    echo '<script>window.location.href = "index.php"</script>';
+                    echo '<script>window.location.href = "index.php?redirect=dangnhap"</script>';
                 } 
                
             }
@@ -104,9 +106,13 @@ if (isset($_GET['redirect'])) {
             case 'dangxuat':
                 unset($_SESSION['tendangnhap']);
                 unset($_SESSION['role']);
-                unset($_SESSION['idtendangnhap']);
+              
                 echo '<script>window.location.href = "index.php"</script>';
                 break;
+               
+                
+                
+              
     }
 } else {
     include  "app/views/Client/home.php";

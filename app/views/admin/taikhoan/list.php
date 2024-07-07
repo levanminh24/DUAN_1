@@ -2,7 +2,7 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <h1 class="h3 mb-2 text-gray-800 mb-5">Tài khoản</h1>
-    <form action="index.php?act=listtkadmin" method="post">
+    <form action="index.php?act=listtk" method="post">
         <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <div class="float-right">
@@ -26,20 +26,25 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($listdanhmuc as $danhmuc) {
-                                extract($danhmuc);
-                                $suadm = "index.php?act=suadm&id=" . $id;
-                                $xoadm = "index.php?act=xoadm&id=" . $id;
-                                $hinhpath = "../../images/" . $img;  // Đường dẫn đến ảnh
-                                $hinh = is_file($hinhpath) ? $hinhpath : "path/to/default/image.jpg";
+                            <?php foreach ($listtaikhoan as $taikhoan) {
+                                extract($taikhoan);
+                                $suatk = "index.php?act=suatk&id=" . $id;
+                                $xoatk = "index.php?act=xoatk&id=" . $id;
+                                $vaitro = $role == 0 ? "Người dùng" : "Admin";
 
                                 echo '<tr>
                                 <td>' . $id . '</td>
-                                <td>' . $name . '</td>
-                                <td><img src="' . $hinh . '" width="100px"></td>
-                                <td>
-                                    <a href="' . $suadm . '" class="btn btn-primary btn-sm">Sửa</a>
-                                    <a href="' . $xoadm . '" class="btn btn-danger btn-sm" onclick="return confirmDelete()">Xóa</a>
+                                <td>' . $tendangnhap . '</td>
+                                <td>' . $matkhau . '</td>
+                                <td>' . $sodienthoai . '</td>
+                                <td>' . $email . '</td>
+                                <td>' . $diachi . '</td>
+                                 <td>' . $vaitro . '</td>
+                                   <td>
+                             
+                                
+                                    <a href="' . $suatk . '" class="btn btn-primary btn-sm">Sửa</a>
+                                    <a href="' . $xoatk . '" class="btn btn-danger btn-sm" onclick="return confirmDelete()">Xóa</a>
                                 </td>
                             </tr>';
                             } ?>
