@@ -134,6 +134,12 @@
             <li class="nav-item">
                 <a class="nav-link" href="?act=listsize">
                     <i class="fas fa-fw fa-comment"></i>
+                    <span>Quản lý size</span></a>
+            </li>
+              <!-- Nav Item - Tables -->
+              <li class="nav-item">
+                <a class="nav-link" href="?act=qlbl">
+                    <i class="fas fa-fw fa-comment"></i>
                     <span>Quản lý bình luận</span></a>
             </li>
 

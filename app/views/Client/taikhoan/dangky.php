@@ -15,7 +15,7 @@
                             <div class="col-12">
                                 <div class="form-group">
                                     <label for="username">Tên đăng nhập <span>*</span></label>
-                                    <input id="username" class="form-control" type="text" name="tendangnhap" value="<?= htmlspecialchars($tendangnhap) ?>">
+                                    <input id="username" class="form-control" type="text" name="tendangnhap" value="<?=($tendangnhap) ?>">
                                     <div class="error-message" style="color: red;"><?= $errors['tendangnhap'] ?></div>
                                 </div>
                             </div>

@@ -134,8 +134,26 @@ if (isset($_GET['act'])) {
             $listtaikhoan = loadall_taikhoan();
             include "taikhoan/list.php";
             break;
+            case 'qlbl':
+               
+                include "binhluan/list.php";
+                break;
+                case 'xoabl':
+                    if(isset($_GET['id'])){
+                     delete_binhluan($_GET['id']);
+                    }
+                    $bl = loadall_binhluan2();
+                    include "binhluan/list.php";
+                    break;
+                    case 'home':
+                        $listthongke = loadall_thongke3();
+                        $thongkebl = loadall_thongkebl();
+                        $thongkedm = loadall_thongkedm();
+                     
+                        include "home.php";
+                        break;
     }
-
+      
    
 
 } else {

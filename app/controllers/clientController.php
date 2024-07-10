@@ -7,14 +7,10 @@ if (isset($_GET['redirect'])) {
             break;
 
         case 'sanphamct':
-            $id = $_GET['idsp'];
            
-            $sanpham = chiTietSanPham($id);
             $danhmuc = loadall_danhmuc();
-           
-            $binhluan=loadall_binhluan($sanpham['id']);
-
             $size = loadall_size();
+           
             include "app/views/Client/sanpham/ctsp.php";
             break;
         case 'dangnhap':
@@ -109,6 +105,23 @@ if (isset($_GET['redirect'])) {
               
                 echo '<script>window.location.href = "index.php"</script>';
                 break;
+                case 'addbl':
+                                
+                    if (isset($_POST['guibinhluan'])) {
+                       if(isset($_SESSION['tendangnhap'])){
+                        $idtaikhoan = $_POST['idtaikhoan'];
+                        $idsanpham = $_POST['idsanpham'];
+                        $noidung = $_POST['noidung'];
+                        $ngaybinhluan = $_POST['ngaybinhluan'];
+                        insert_bl($idtaikhoan,$idsanpham,$noidung,$ngaybinhluan);
+                        echo "<script>window.location.href='index.php?redirect=sanphamct&idsp=$idsanpham';</script>";
+                       } else{
+                        echo '<script>alert("chưa đăng nhập")</script>';
+                        echo '<script>window.location.href = "index.php?redirect=dangnhap"</script>';
+                       }
+                    }
+                    include "app/views/Client/binhluan/binhluan.php";
+                    break;
                
                 
                 
