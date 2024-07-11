@@ -106,7 +106,7 @@
             <ul class="tai-khoan-dropdown" id="dropdown-menu">
                 <li><a href="index.php?redirect=dangxuat" id="taikhoan">Đăng xuất</a></li>
                 <li><a href="index.php?redirect=doimatkhau" id="taikhoan">Đổi mật khẩu</a></li>
-                <li><a href="index.php?redirect=tttk" id="taikhoan">Thông tin tài khoản</a></li>
+                <li><a href="index.php?redirect=thongtintaikhoan" id="taikhoan">Thông tin tài khoản</a></li>
                 <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 1) { ?>
                     <li><a href="app/views/admin/index.php?act=listdm" id="taikhoan">Truy cập Cpanel</a></li>
                 <?php } ?>
@@ -121,6 +121,7 @@
                     <button class="shopping-cart-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#AsideOffcanvasCart" aria-controls="offcanvasRightLabel">
                       <i class="pe-7s-shopbag icon"></i>
                       <sup class="shop-count">02</sup>
+                      <a href="?redirect=giohang"></a>
                     </button>
                   </div>
                   <button class="btn-menu" type="button" data-bs-toggle="offcanvas" data-bs-target="#AsideOffcanvasMenu" aria-controls="AsideOffcanvasMenu">

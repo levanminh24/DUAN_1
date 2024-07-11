@@ -40,7 +40,7 @@
                         <a class="lost-password" href="index.php?redirect=dangky">Bạn chưa có tài khoản?</a>
                         </div>
                       </div>
-                                    <a class="lost-password" href="#/">Lost your password?</a>
+                                    <a class="lost-password" href="index.php?redirect=doimatkhau">Lost your password?</a>
                                 </div>
                             </div>
                         </div>

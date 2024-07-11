@@ -82,18 +82,16 @@
        
       </div>
     </section>
-<section class="product-area product-collection-area">
+    <section class="product-area product-collection-area">
   <div class="container">
     <div class="row">
       <?php
       $listsp = loadall_danhmuc();
-    //  echo "<pre>"; print_r($listsp); echo "</pre>"; // Thêm dòng này để kiểm tra dữ liệu
       foreach($listsp as $sp) {
         extract($sp);
         $link_san_pham_theo_danhmuc = "index.php?act=sptheodanhmuc&idloai=".$id;
       ?>
         <div class="col-lg-4 col-md-6">
-          <!--== Start Product Collection Item ==-->
           <div class="product-collection">
             <div class="inner-content">
               <div class="product-collection-content">
@@ -105,21 +103,18 @@
               <a class="banner-link-overlay" href="<?= $link_san_pham_theo_danhmuc ?>"></a>
             </div>
           </div>
-          <!--== End Product Collection Item ==-->
         </div>
-      <?php
-      }
-      ?>
+      <?php } ?>
     </div>
   </div>
 </section>
+
 <section class="product-area product-default-area">
   <div class="container pt--0">
     <div class="row">
       <div class="col-12">
         <div class="section-title text-center">
           <h3 class="title">Các mặt hàng nổi bật</h3>
-          
         </div>
       </div>
     </div>
@@ -131,21 +126,13 @@
         $linksp = "index.php?redirect=sanphamct&idsp=".$id;
       ?>
         <div class="col-sm-6 col-lg-3">
-          <!--== Start Product Item ==-->
           <div class="product-item">
             <div class="inner-content">
               <div class="product-thumb">
                 <a href="<?= $linksp ?>">
                   <img src="public/images/<?= $img ?>" width="270" height="274" alt="Image-HasTech">
                 </a>
-                <div class="product-action">
-                  <a class="btn-product-wishlist" href="#"><i class="fa fa-heart"></i></a>
-                  <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
-                  <button type="button" class="btn-product-quick-view-open">
-                    <i class="fa fa-arrows"></i>
-                  </button>
-                  <a class="btn-product-compare" href="index.php?redirect=sanphamct&idsp=<?= $id ?>"><i class="fa fa-random"></i></a>
-                </div>
+              
                 <a class="banner-link-overlay" href="<?= $linksp ?>"></a>
               </div>
               <div class="product-info">
@@ -155,17 +142,23 @@
                   <span class="sep">-</span>
                   <span class="price">$<?= $giasp ?></span>
                 </div>
+                <form action="index.php?redirect=addtocart" method="post">
+                  <input type="hidden" name="id" value="<?= $id ?>">
+                  <input type="hidden" name="tensp" value="<?= $tensp ?>">
+                  <input type="hidden" name="img" value="<?= $img ?>">
+                  <input type="hidden" name="giasp" value="<?= $giasp ?>">
+                  <input type="hidden" name="quantity" value="1">
+                  <input type="submit" name="addtocart" value="Thêm vào giỏ hàng" class="product__cart">
+                </form>
               </div>
             </div>
           </div>
-          <!--== End Product Item ==-->
         </div>
-      <?php
-      }
-      ?>
+      <?php } ?>
     </div>
   </div>
 </section>
+
 <section class="blog-area blog-default-area">
       <div class="container">
         <div class="row">
@@ -247,3 +240,33 @@
     </section>
     <!--== End Blog Area Wrapper ==-->
   </main>
+<style>
+  .product__cart {
+    display: block;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #ff6f61; /* Adjust to match your theme color */
+    color: #fff;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.product__cart:hover {
+    background-color: #ff3d2e; /* Adjust for a hover effect */
+    color: #fff;
+}
+
+.product-info {
+    text-align: center;
+}
+
+.product-item {
+    margin-bottom: 30px;
+}
+
+</style>
