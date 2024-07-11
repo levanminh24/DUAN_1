@@ -1,5 +1,4 @@
 <main class="main-content">
-    <!--== Start Page Header Area Wrapper ==-->
     <div class="page-header-area" data-bg-img="assets/img/danhmuc/bn1.png">
       <div class="container pt--0 pb--0">
         <div class="row">
@@ -18,72 +17,74 @@
         </div>
       </div>
     </div>
-    <!--== End Page Header Area Wrapper ==-->
-
-    <!--== Start Blog Area Wrapper ==-->
     <section class="shopping-cart-area">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
             <div class="shopping-cart-form table-responsive">
             <form action="#" method="post">
-    <table class="table text-center">
-        <thead>
-            <tr>
-                <th class="product-remove">&nbsp;</th>
-                <th class="product-thumb">&nbsp;</th>
-                <th class="product-name">Product</th>
-                <th class="product-price">Price</th>
-                <th class="product-quantity">Quantity</th>
-                <th class="product-subtotal">Total</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            $tong = 0;
-            $i = 0;
-            $img_path = "public/images/";
-            foreach ($_SESSION['mycart'] as $cart) {
-                $hinh = $img_path . $cart[2];
-                $ttien = $cart[3] * $cart[4];
-                $tong += $ttien;
-                echo '
-                <tr class="cart-product-item">
-                    <td class="product-remove">
-                        <a href="index.php?redirect=delcart&idcart=' . $i . '"><i class="fa fa-trash-o"></i></a>
-                    </td>
-                    <td class="product-thumb">
-                        <a href="single-product.html">
-                            <img src="' . $hinh . '" width="90" height="110" alt="Product Image">
-                        </a>
-                    </td>
-                    <td class="product-name">
-                        <h4 class="title"><a href="single-product.html">' . $cart[1] . '</a></h4>
-                    </td>
-                    <td class="product-price">
-                        <span class="price">' . $cart[3] . ' VND</span>
-                    </td>
-                    <td class="product-quantity">
-                        <div class="pro-qty">
-                            <input type="text" class="quantity" title="Quantity" value="' . $cart[4] . '" min="1">
-                        </div>
-                    </td>
-                    <td class="product-subtotal">
-                        <span class="price">' . $ttien . ' VND</span>
-                    </td>
-                </tr>';
-                $i++;
-            }
-            ?>
-            <tr class="actions">
-                <td class="border-0" colspan="6">
-                    <button type="submit" class="update-cart" disabled>Update cart</button>
-                    <button type="submit" class="clear-cart">Clear Cart</button>
-                    <a href="shop.html" class="btn-theme btn-flat">Continue Shopping</a>
+            <table class="table text-center">
+    <thead>
+        <tr>
+            <th class="product-remove">&nbsp;</th>
+            <th class="product-thumb">&nbsp;</th>
+            <th class="product-name">Product</th>
+            <th class="product-size">Size</th>
+            <th class="product-price">Price</th>
+            <th class="product-quantity">Quantity</th>
+            <th class="product-subtotal">Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        $tong = 0;
+        $i = 0;
+        $img_path = "public/images/";
+        foreach ($_SESSION['mycart'] as $cart) {
+            $hinh = $img_path . $cart[2];
+            $ttien = $cart[3] * $cart[4];
+            $tong += $ttien;
+            echo '
+            <tr class="cart-product-item">
+                <td class="product-remove">
+                    <a href="index.php?redirect=delcart&idcart=' . $i . '"><i class="fa fa-trash-o"></i></a>
                 </td>
-            </tr>
-        </tbody>
-    </table>
+                <td class="product-thumb">
+                    <a href="single-product.html">
+                        <img src="' . $hinh . '" width="90" height="110" alt="Product Image">
+                    </a>
+                </td>
+                <td class="product-name">
+                    <h4 class="title"><a href="single-product.html">' . $cart[1] . '</a></h4>
+                </td>
+                <td class="product-size">
+                    <span>' . $cart[6] . '</span>
+                </td>
+                <td class="product-price">
+                    <span class="price">' . $cart[3] . ' VND</span>
+                </td>
+                <td class="product-quantity">
+                    <div class="pro-qty">
+                        <input type="text" class="quantity" title="Quantity" value="' . $cart[4] . '" min="1">
+                    </div>
+                </td>
+                <td class="product-subtotal">
+                    <span class="price">' . $ttien . ' VND</span>
+                </td>
+            </tr>';
+            $i++;
+        }
+        ?>
+        <tr class="actions">
+            <td class="border-0" colspan="7">
+                <button type="submit" class="update-cart" disabled>Update cart</button>
+                <button type="submit" class="clear-cart">Clear Cart</button>
+                <a href="shop.html" class="btn-theme btn-flat">Continue Shopping</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
 </form>
 
             </div>

@@ -129,55 +129,52 @@ if (isset($_GET['redirect'])) {
                 include "app/views/Client/cart/giohang.php";
             }
             break;
-        case 'addtocart':
-            // Kiểm tra xem người dùng đã đăng nhập chưa
-            if (!isset($_SESSION['tendangnhap'])) {
-                // Nếu chưa đăng nhập, chuyển hướng đến trang đăng nhập
-                echo '<script>window.location.href="index.php?redirect=dangnhap"</script>';
-                exit();
-            }
-
-            // Thêm thông tin sản phẩm từ form "add to cart" vào session
-            if (isset($_POST['addtocart']) && $_POST['addtocart']) {
-                $id = $_POST['id'];
-                $tensp = $_POST['tensp'];
-                $img = $_POST['img'];
-                $giasp = $_POST['giasp'];
-                $soluong = isset($_POST['quantity']) ? (int)$_POST['quantity'] : 1;
-                $ttien = $soluong * $giasp;
-
-                // Kiểm tra xem giỏ hàng đã được khởi tạo chưa
-                if (!isset($_SESSION['mycart']) || !is_array($_SESSION['mycart'])) {
-                    $_SESSION['mycart'] = [];
+            case 'addtocart':
+                // Kiểm tra xem người dùng đã đăng nhập chưa
+                if (!isset($_SESSION['tendangnhap'])) {
+                    // Nếu chưa đăng nhập, chuyển hướng đến trang đăng nhập
+                    echo '<script>window.location.href="index.php?redirect=dangnhap"</script>';
+                    exit();
                 }
-
-                // Kiểm tra xem sản phẩm đã có trong giỏ hàng chưa
-                $kiemtra = false;
-                foreach ($_SESSION['mycart'] as &$cartItem) {
-                    if ($cartItem[0] == $id) {
-                        // Cập nhật số lượng và tổng tiền
-                        $cartItem[4] += $soluong;
-                        $cartItem[5] = $cartItem[4] * $giasp;
-                        $kiemtra = true;
-                        break;
+            
+                // Thêm thông tin sản phẩm từ form "add to cart" vào session
+                if (isset($_POST['addtocart']) && $_POST['addtocart']) {
+                    $id = $_POST['id'];
+                    $tensp = $_POST['tensp'];
+                    $img = $_POST['img'];
+                    $giasp = $_POST['giasp'];
+                    $soluong = isset($_POST['quantity']) ? (int)$_POST['quantity'] : 1;
+                    $size = $_POST['size'];
+                    $ttien = $soluong * $giasp;
+            
+                    // Kiểm tra xem giỏ hàng đã được khởi tạo chưa
+                    if (!isset($_SESSION['mycart']) || !is_array($_SESSION['mycart'])) {
+                        $_SESSION['mycart'] = [];
+                    }
+            
+                    // Kiểm tra xem sản phẩm đã có trong giỏ hàng chưa
+                    $kiemtra = false;
+                    foreach ($_SESSION['mycart'] as &$cartItem) {
+                        if ($cartItem[0] == $id && $cartItem[6] == $size) {
+                            // Cập nhật số lượng và tổng tiền
+                            $cartItem[4] += $soluong;
+                            $cartItem[5] = $cartItem[4] * $giasp;
+                            $kiemtra = true;
+                            break;
+                        }
+                    }
+            
+                    // Nếu sản phẩm chưa có trong giỏ hàng, thêm nó như một mục mới
+                    if (!$kiemtra) {
+                        $spadd = [$id, $tensp, $img, $giasp, $soluong, $ttien, $size];
+                        $_SESSION['mycart'][] = $spadd;
                     }
                 }
-
-
-                // Nếu sản phẩm chưa có trong giỏ hàng, thêm nó như một mục mới
-                if (!$kiemtra) {
-                    $spadd = [$id, $tensp, $img, $giasp, $soluong, $ttien];
-                    $_SESSION['mycart'][] = $spadd;
-                }
-                //xoá đơn hàng
-                $_SESSION['cart'] = [];
-
-
-                // Tính tổng tiền của giỏ hàng
-
-            }
-            include "app/views/Client/cart/giohang.php";
-            break;
+            
+                include "app/views/Client/cart/giohang.php";
+                break;
+            
+            
 
 
 
@@ -198,9 +195,6 @@ if (isset($_GET['redirect'])) {
             break;
 
 
-        case 'tt':
-            include "app/views/Client/cart/giohang.php";
-            break;
         case 'thongtintaikhoan':
             include "app/views/Client/taikhoan/thongtintk.php";
             break;
@@ -259,7 +253,6 @@ if (isset($_GET['redirect'])) {
                 include "app/views/Client/taikhoan/thongtintk.php";
                 break;
             
-      
     }
 } else {
     include  "app/views/Client/home.php";
