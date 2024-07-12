@@ -26,3 +26,8 @@ function quenmatkhau($email,$tendangnhap){
     return $result;
     
 }
+function laymatkhau($email){
+    $sql = "SELECT matkhau FROM tai_khoan WHERE email = '$email'";
+    $result = pdo_query_one($sql);
+    return $result;
+}

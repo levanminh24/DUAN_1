@@ -79,6 +79,7 @@
             <td class="border-0" colspan="7">
                 <button type="submit" class="update-cart" disabled>Update cart</button>
                 <button type="submit" class="clear-cart">Clear Cart</button>
+              
                 <a href="shop.html" class="btn-theme btn-flat">Continue Shopping</a>
             </td>
         </tr>

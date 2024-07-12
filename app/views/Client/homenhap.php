@@ -82,13 +82,38 @@
        
       </div>
     </section>
-    
-<section class="product-area product-default-area ">
+    <section class="product-area product-collection-area">
+  <div class="container">
+    <div class="row">
+      <?php
+      $listsp = loadall_danhmuc();
+      foreach($listsp as $sp) {
+        extract($sp);
+        $link_san_pham_theo_danhmuc = "?redirect=sanphamtheodm&id=".$id;
+      ?>
+        <div class="col-lg-4 col-md-6">
+          <div class="product-collection">
+            <div class="inner-content">
+              <div class="product-collection-content">
+                <div class="content">
+                  <h3 class="title"><a href="<?= $link_san_pham_theo_danhmuc ?>"><?= $name ?></a></h3>
+                </div>
+              </div>
+              <div class="product-collection-thumb" data-bg-img="public/images/<?= $img ?>"></div>
+              <a class="banner-link-overlay" href="<?= $link_san_pham_theo_danhmuc ?>"></a>
+            </div>
+          </div>
+        </div>
+      <?php } ?>
+    </div>
+  </div>
+</section>
+<section class="product-area product-default-area">
   <div class="container pt--0">
     <div class="row">
       <div class="col-12">
-        <div class=" text-left">
-          <h2 class="title mt-5 mb-5">Sản phẩm nổi bật</h2>
+        <div class="section-title text-center">
+          <h3 class="title">Các mặt hàng nổi bật</h3>
         </div>
       </div>
     </div>

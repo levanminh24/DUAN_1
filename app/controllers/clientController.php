@@ -3,16 +3,48 @@ if (isset($_GET['redirect'])) {
     $redirect = $_GET['redirect'];
     switch ($redirect) {
         case 'listspHome':
-            include  "app/views/Client/home.php";
+            if (isset($_GET['idsp'])) {
+                $id = $_GET['idsp'];
+                update_luotxem_sp($id);
+               echo "<script>window.location.href='index.php?redirect=sanphamct&idsp=$id';</script>";
+                exit;
+            } else {
+                $listsp = loadall_spHome();
+                include "app/views/Client/home.php";
+            }
             break;
+        
 
         case 'sanphamct':
-
+         
             $danhmuc = loadall_danhmuc();
             $size = loadall_size();
 
             include "app/views/Client/sanpham/ctsp.php";
             break;
+            case 'sanphamtheodm':
+                if (isset($_GET['id']) && ($_GET['id'] != "")) {
+                    if (isset($_POST['submittimkiem'])) {
+                        $kyw = $_POST['timkiem'];
+                    } else {
+                        $kyw = "";
+                    }
+                    if (isset($_POST['submitlocgia'])) {
+                        $giadau = $_POST['giaspdau'];
+                        $giacuoi = $_POST['giaspcuoi'];
+                    } else {
+                        $giadau = 0;
+                        $giacuoi = 0;
+                    }
+                    $list_sp_dm = load_all_spdm($_GET['id'], $kyw, $giadau, $giacuoi, 1);
+                    $sp = load_one_spdm($_GET['id']);
+                } else {
+                    $list_sp_dm = []; // Khởi tạo biến $list_sp_dm rỗng nếu không có id
+                }
+                include "app/views/Client/sanpham/sptheodm.php";
+                break;
+            
+            
         case 'dangnhap':
             $errors = ['tendangnhap' => '', 'matkhau' => ''];
             $tendangnhap = $matkhau = '';
@@ -104,6 +136,25 @@ if (isset($_GET['redirect'])) {
 
             echo '<script>window.location.href = "index.php"</script>';
             break;
+          
+       
+                // Xử lý khi người dùng gửi form 'quenmk'
+                case 'quenmk':
+                    if(isset($_POST['quenmk'])){
+                        $email = $_POST['email'];
+                        $check = laymatkhau($email);
+                        if(!empty($check)){
+                            $matkhau = $check['matkhau'];
+                            $errors = "Mật khẩu của bạn là: $matkhau";
+                        } else {
+                            $errors = "Không tìm thấy tài khoản có email này.";
+                        }
+                    }
+                    // Bao gồm trang quenmk.php và truyền biến $errors vào
+                    include "app/views/Client/taikhoan/quenmk.php";
+                    break;
+         
+                
         case 'addbl':
 
             if (isset($_POST['guibinhluan'])) {

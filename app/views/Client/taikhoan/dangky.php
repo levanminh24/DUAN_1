@@ -52,6 +52,10 @@
                                     <button type="submit" class="btn-login" name="dangky">Đăng ký</button>
                                 </div>
                             </div>
+                            <div class="form-check">
+                       
+                       <a class="lost-password" href="index.php?redirect=dangnhap">Bạn đã có tài khoản</a>
+                       </div>
                         </div>
                     </form>
                 </div>
