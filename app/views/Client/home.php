@@ -140,70 +140,37 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-6 col-lg-4">
-            <!--== Start Blog Item ==-->
+    <!--== Start Blog Item ==-->
+    <?php
+    $tintuchome = tintuc_Home();
+    foreach($tintuchome as $tintuc) {
+        extract($tintuc);
+        ?>
+        <div class="col-md-6 col-lg-4">
             <div class="post-item">
-              <div class="inner-content">
-                <div class="thumb">
-                  <a href="blog-details.html"><img src="assets/img/blog/1.webp" width="370" height="260" alt="Image-HasTech"></a>
+                <div class="inner-content">
+                    <div class="thumb">
+                        <a href="blog-details.html"> <img src="public/images/<?= $img ?>"  width="370" height="260" alt="Image-HasTech"></a>
+                    </div>
+                    <div class="content">
+                        <div class="meta-post">
+                            <ul>
+                                <li class="post-date"><i class="fa fa-calendar"></i><a href="blog.html"><?= $ngaydang ?></a></li>
+                                <li class="author-info"><i class="fa fa-user"></i><a href="blog.html"><?= $tacgia ?></a></li>
+                            </ul>
+                        </div>
+                        <h4 class="title"><a href="blog-details.html"><?= $tieude ?></a></h4>
+                        <a class="post-btn" href="?redirect=tintucchitiet&id=<?= $id ?>">Read More</a>
+                    </div>
                 </div>
-                <div class="content">
-                  <div class="meta-post">
-                    <ul>
-                      <li class="post-date"><i class="fa fa-calendar"></i><a href="blog.html">27,Jun 2030</a></li>
-                      <li class="author-info"><i class="fa fa-user"></i><a href="blog.html">Oaklee Odom</a></li>
-                    </ul>
-                  </div>
-                  <h4 class="title"><a href="blog-details.html">Lorem ipsum dolor ametcons adipisicing elit sed</a></h4>
-                  <a class="post-btn" href="blog.html">Read More</a>
-                </div>
-              </div>
             </div>
-            <!--== End Blog Item ==-->
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <!--== Start Blog Item ==-->
-            <div class="post-item">
-              <div class="inner-content">
-                <div class="thumb">
-                  <a href="blog-details.html"><img src="assets/img/blog/2.webp" width="370" height="260" alt="Image-HasTech"></a>
-                </div>
-                <div class="content">
-                  <div class="meta-post">
-                    <ul>
-                      <li class="post-date"><i class="fa fa-calendar"></i><a href="blog.html">27,Jun 2030</a></li>
-                      <li class="author-info"><i class="fa fa-user"></i><a href="blog.html">Oaklee Odom</a></li>
-                    </ul>
-                  </div>
-                  <h4 class="title"><a href="blog-details.html">Celebrity Daughter Opens About Upto Having Her Eye</a></h4>
-                  <a class="post-btn" href="blog.html">Read More</a>
-                </div>
-              </div>
-            </div>
-            <!--== End Blog Item ==-->
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <!--== Start Blog Item ==-->
-            <div class="post-item">
-              <div class="inner-content">
-                <div class="thumb">
-                  <a href="blog-details.html"><img src="assets/img/blog/3.webp" width="370" height="260" alt="Image-HasTech"></a>
-                </div>
-                <div class="content">
-                  <div class="meta-post">
-                    <ul>
-                      <li class="post-date"><i class="fa fa-calendar"></i><a href="blog.html">27,Jun 2030</a></li>
-                      <li class="author-info"><i class="fa fa-user"></i><a href="blog.html">Oaklee Odom</a></li>
-                    </ul>
-                  </div>
-                  <h4 class="title"><a href="blog-details.html">Romantic Love Stories Of Hollywood Popular Celebrities</a></h4>
-                  <a class="post-btn" href="blog.html">Read More</a>
-                </div>
-              </div>
-            </div>
-            <!--== End Blog Item ==-->
-          </div>
         </div>
+        <?php
+    }
+    ?>
+    <!--== End Blog Item ==-->
+</div>
+
       </div>
     </section>
     <!--== End Blog Area Wrapper ==-->
@@ -236,8 +203,35 @@
 .product-item {
     margin-bottom: 30px;
 }
-
+.row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .col-md-6, .col-lg-4 {
+    display: flex;
+    flex: 1 0 33%; /* Adjust the value according to your layout */
+    box-sizing: border-box;
+    padding: 10px;
+  }
+  .post-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    background: #f9f9f9; /* Background color for visibility */
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add some shadow for better look */
+  }
+  .post-item .inner-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  .post-item .content {
+    margin-top: auto;
+  }
 </style>
+
 <aside class="product-quick-view-modal">
     <div class="product-quick-view-inner">
       <div class="product-quick-view-content">

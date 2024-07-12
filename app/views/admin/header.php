@@ -165,10 +165,10 @@
                 </a>
                 <div id="collapseSevent" class="collapse" aria-labelledby="headingSevent" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="?act=qltintuc">Quản lý tin tức</a>
+                        <a class="collapse-item" href="?act=tintuc">Quản lý tin tức</a>
                     </div>
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="?act=listnhavan">Quản lý nha van</a>
+                        <a class="collapse-item" href="?act=addtintuc">Thêm tin tức</a>
                     </div>
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="?act=quanlytieuthuyet">Quản lý tiểu thuyết</a>

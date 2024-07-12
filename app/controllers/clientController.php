@@ -3,6 +3,7 @@ if (isset($_GET['redirect'])) {
     $redirect = $_GET['redirect'];
     switch ($redirect) {
         case 'listspHome':
+           
             if (isset($_GET['idsp'])) {
                 $id = $_GET['idsp'];
                 update_luotxem_sp($id);
@@ -224,12 +225,7 @@ if (isset($_GET['redirect'])) {
             
                 include "app/views/Client/cart/giohang.php";
                 break;
-            
-            
-
-
-
-
+        
         case 'delcart':
             if (isset($_GET['idcart'])) {
                 $idcart = $_GET['idcart'];
@@ -303,6 +299,15 @@ if (isset($_GET['redirect'])) {
                 }
                 include "app/views/Client/taikhoan/thongtintk.php";
                 break;
+                case 'tintucchitiet':
+                    $id = $_GET['id'];
+                    $tintucchitiet = tintuc_chitiet($id);
+                    include "app/views/Client/tintuc/tintucchitiet.php";
+                    break;
+                    case 'tatcatintuc':
+                        include "app/views/Client/tintuc/tatcatintuc.php";
+                        break;
+                
             
     }
 } else {

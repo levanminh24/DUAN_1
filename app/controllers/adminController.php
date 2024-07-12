@@ -152,6 +152,57 @@ if (isset($_GET['act'])) {
                      
                         include "home.php";
                         break;
+                        case 'tintuc':
+                            $listtintuc = loadall_tintuc();
+                            include "tintuc/list.php";
+                            break;
+                            case 'addtintuc':
+                                if(isset($_POST['themmoi'])){
+                                    $tacgia = $_POST['tacgia'];
+                                    $ngaydang = $_POST['ngaydang'];
+                                    $tieude = $_POST['tieude'];
+                                    $noidung = $_POST['noidung'];
+                                    $noidunghai = $_POST['noidunghai'];
+                                    $hinh = "";  // Mặc định là không có tệp
+                                    if (isset($_FILES['hinh']) && $_FILES['hinh']['error'] == UPLOAD_ERR_OK) {
+                                        $hinh = basename($_FILES["hinh"]["name"]);
+                                        $target_dir = "../../images/";
+                                        $target_file = $target_dir . $hinh;
+                                        move_uploaded_file($_FILES["hinh"]["tmp_name"], $target_file);
+                                    }
+                                    insert_tintuc($tacgia, $ngaydang, $hinh, $tieude, $noidung, $noidunghai);
+                                    $thongbao = "Them thanh cong";
+                                }
+                                include "tintuc/add.php";
+                                break;
+                            case 'suatintuc':
+                                if(isset($_GET['id']) && ($_GET['id']) > 0){
+                                    $tintuc = loadone_tintuc($_GET['id']);
+                                }
+                                include "tintuc/update.php";
+                                break;
+                            case 'updatetintuc':
+                                if(isset($_POST['capnhat'])){
+                                    $id = $_POST['id'];
+                                    $ngaydang = $_POST['ngaydang'];
+                                    $tacgia = $_POST['tacgia'];
+                                    $tieude = $_POST['tieude'];
+                                    $noidung = $_POST['noidung'];
+                                    $noidunghai = $_POST['noidunghai'];
+                                    if (isset($_FILES['hinh']) && $_FILES['hinh']['error'] == UPLOAD_ERR_OK) {
+                                        $hinh = basename($_FILES["hinh"]["name"]);
+                                        $target_dir = "../../images/";
+                                        $target_file = $target_dir . $hinh;
+                                        move_uploaded_file($_FILES["hinh"]["tmp_name"], $target_file);
+                                        update_tintuc($id, $tacgia, $ngaydang, $hinh, $tieude, $noidung, $noidunghai);
+                                    } else {
+                                    update_tintuc($id, $tacgia, $ngaydang, $hinh, $tieude, $noidung, $noidunghai);
+                                    }
+                                    $thongbao = "Cấp nhật thanh cong";
+                                }
+                                $listtintuc = loadall_tintuc();
+                                include "tintuc/list.php";
+                                break;
     }
       
    

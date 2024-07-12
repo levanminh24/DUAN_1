@@ -161,7 +161,7 @@
 </li>
 
                       
-                      <li class=""><a href="#/"><span>Tin tức</span></a>
+                      <li class=""><a href="?redirect=tatcatintuc"><span>Tin tức</span></a>
 
 
                       </li>
