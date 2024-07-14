@@ -221,9 +221,11 @@ if (isset($_GET['redirect'])) {
                         $spadd = [$id, $tensp, $img, $giasp, $soluong, $ttien, $size];
                         $_SESSION['mycart'][] = $spadd;
                     }
+                    echo '<script>alert("Cập nhật thành công")</script>';
                 }
             
                 include "app/views/Client/cart/giohang.php";
+                
                 break;
         
         case 'delcart':
@@ -307,6 +309,22 @@ if (isset($_GET['redirect'])) {
                     case 'tatcatintuc':
                         include "app/views/Client/tintuc/tatcatintuc.php";
                         break;
+                        case 'lienhe':
+                            if (isset($_POST['guilienhe'])) {
+                                // Kiểm tra sự tồn tại của các biến POST
+                                $hovaten = $_POST['hovaten'];
+                                $email = $_POST['email'];
+                                $sodienthoai = $_POST['sodienthoai'];
+                                $noidung = $_POST['noidung'];
+                               
+                                $ngaygui = date('Y-m-d H:i:s'); // Lấy thời gian hiện tại
+                    
+                                insert_lienhe($hovaten, $email, $sodienthoai, $noidung, $ngaygui);
+                           
+                            }
+                         
+                            include "app/views/Client/lienhe/lienhe.php";
+                            break;
                 
             
     }

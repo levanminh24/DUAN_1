@@ -119,10 +119,9 @@
 
 
                     <div class="shopping-cart">
-                      <button class="shopping-cart-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#AsideOffcanvasCart" aria-controls="offcanvasRightLabel">
-                        <i class="pe-7s-shopbag icon"></i>
+                      <button class="shopping-cart-btn" type="button" data-bs-toggle="offcanvas"  aria-controls="offcanvasRightLabel">
                         <sup class="shop-count">02</sup>
-                        <a href="?redirect=giohang"></a>
+                        <a href="?redirect=addtocart"> <i class="pe-7s-shopbag icon"></i></a>
                       </button>
                     </div>
                     <button class="btn-menu" type="button" data-bs-toggle="offcanvas" data-bs-target="#AsideOffcanvasMenu" aria-controls="AsideOffcanvasMenu">
@@ -165,7 +164,7 @@
 
 
                       </li>
-                      <li><a href="contact.html"><span>Liên hệ</span></a></li>
+                      <li><a href="?redirect=lienhe"><span>Liên hệ</span></a></li>
                     </ul>
                 </div>
               </div>

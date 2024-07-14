@@ -85,10 +85,13 @@ if ($id) {
                             <div class="col-md-6">
                               <div class="qty-wrap">
                                 <div class="pro-qty">
-                                  <button type="button" class="dec qtybtn">-</button>
+
                                   <input type="text" value="1" form="add-to-cart-form" id="quantity-input">
+                                  <button type="button" class="dec qtybtn">-</button>
                                   <button type="button" class="inc qtybtn">+</button>
                                 </div>
+
+
                               </div>
                             </div>
                             <div class="col-md-6">
@@ -110,7 +113,7 @@ if ($id) {
                             </div>
                           </div>
 
-                          <input type="submit" name="addtocart" value="Thêm vào giỏ hàng" class="product__cart">
+                          <input type="submit" name="addtocart" value="Thêm vào giỏ hàng" class="product__cart mt-3">
                         </form>
                       </div>
                     </div>
@@ -134,55 +137,55 @@ if ($id) {
         <ul class="nav product-tab-nav" id="ReviewTab" role="tablist">
           <?php
           $idsanpham = $_GET['idsp'];
-        $dembl = demBinhluan($idsanpham);
-      if ($dembl) {
-    extract($dembl); // Điều này sẽ tạo biến $countbl từ mảng trả về
-      } else {
-    $countbl = 0; // Nếu không có kết quả, thiết lập giá trị mặc định
-            }
-             ?>
-<li role="presentation">
-    <a id="reviews-tab" data-bs-toggle="pill" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">Reviews <span>(<?= $countbl ?>)</span></a>
-</li>
+          $dembl = demBinhluan($idsanpham);
+          if ($dembl) {
+            extract($dembl); // Điều này sẽ tạo biến $countbl từ mảng trả về
+          } else {
+            $countbl = 0; // Nếu không có kết quả, thiết lập giá trị mặc định
+          }
+          ?>
+          <li role="presentation">
+            <a id="reviews-tab" data-bs-toggle="pill" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">Reviews <span>(<?= $countbl ?>)</span></a>
+          </li>
 
         </ul>
         <div class="reviews-form-area">
 
-            <div class="reviews-form-content">
-              <form action="index.php?redirect=addbl" method="POST">
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="form-group">
+          <div class="reviews-form-content">
+            <form action="index.php?redirect=addbl" method="POST">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
 
-                      <input id="iduser" class="form-control" type="hidden" name="idtaikhoan" value="<?php echo isset($_SESSION['idtendangnhap']) ? $_SESSION['idtendangnhap'] : ''; ?>">
-                      <input id="tendangnhap" class="form-control" type="hidden" value="<?php echo isset($_SESSION['tendangnhap']) ? $_SESSION['tendangnhap'] : ''; ?>" readonly>
-                    </div>
-                  </div>
-                  <div class="col-md-12">
-                    <div class="form-group">
-                      <input id="idpro" class="form-control" type="hidden" name="idsanpham" value="<?php echo $_GET['idsp']; ?>">
-                    </div>
-                  </div>
-                  <div class="col-md-12">
-                    <div class="form-group">
-                      <input id="ngaybinhluan" class="form-control" type="hidden" name="ngaybinhluan" value="<?php echo date('Y-m-d'); ?>">
-                    </div>
-                  </div>
-                  <div class="col-md-12">
-                    <div class="form-group">
-                      <label for="for_comment">Nội dung bình luận (1500 ký tự)</label>
-                      <textarea id="for_comment" class="form-control" placeholder="Viết bình luận của bạn ở đây" name="noidung"></textarea>
-                    </div>
-                  </div>
-                  <div class="col-md-12">
-                    <div class="form-submit-btn">
-                      <button type="submit" name="guibinhluan" class="btn-submit mb-4 mt-2">Gửi bình luận</button>
-                    </div>
+                    <input id="iduser" class="form-control" type="hidden" name="idtaikhoan" value="<?php echo isset($_SESSION['idtendangnhap']) ? $_SESSION['idtendangnhap'] : ''; ?>">
+                    <input id="tendangnhap" class="form-control" type="hidden" value="<?php echo isset($_SESSION['tendangnhap']) ? $_SESSION['tendangnhap'] : ''; ?>" readonly>
                   </div>
                 </div>
-              </form>
-            </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <input id="idpro" class="form-control" type="hidden" name="idsanpham" value="<?php echo $_GET['idsp']; ?>">
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <input id="ngaybinhluan" class="form-control" type="hidden" name="ngaybinhluan" value="<?php echo date('Y-m-d'); ?>">
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="for_comment">Nội dung bình luận (1500 ký tự)</label>
+                    <textarea id="for_comment" class="form-control" placeholder="Viết bình luận của bạn ở đây" name="noidung"></textarea>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-submit-btn">
+                    <button type="submit" name="guibinhluan" class="btn-submit mb-4 mt-2">Gửi bình luận</button>
+                  </div>
+                </div>
+              </div>
+            </form>
           </div>
+        </div>
 
 
         <!--== Start Reviews Content Item ==-->
@@ -254,36 +257,11 @@ if ($id) {
     background: orangered;
   }
 
-  .pro-qty {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    /* căn cả hai bên */
-    max-width: 120px;
-  }
 
-  .pro-qty button {
-    background: #ddd;
-    border: none;
-    width: 30px;
-    height: 30px;
-    font-size: 18px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background 0.3s;
-  }
 
-  .pro-qty button:hover {
-    background: #ccc;
-  }
 
-  .pro-qty input {
-    width: 10px;
-    text-align: center;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin: 0 5px;
-  }
+
+
 
   .tt {
     width: 100%;
